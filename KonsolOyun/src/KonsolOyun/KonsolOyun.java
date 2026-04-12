@@ -1,5 +1,8 @@
 package KonsolOyun;
 
-public class KonsolOyun {
+public abstract class KonsolOyun {
+	
+	
+	abstract void deneme();
 
 }
