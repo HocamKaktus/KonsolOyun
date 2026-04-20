@@ -1,4 +1,4 @@
-package KonsolOyun;
+package konsoloyun.veri;
 
 public interface OdemeYontemi {
 

@@ -1,4 +1,4 @@
-package KonsolOyun;
+package konsoloyun.model;
 
 public abstract class Hesap {
 

@@ -1,4 +1,4 @@
-package KonsolOyun;
+package konsoloyun.servis;
 
 public class KonsolOyunSistemi {
 
