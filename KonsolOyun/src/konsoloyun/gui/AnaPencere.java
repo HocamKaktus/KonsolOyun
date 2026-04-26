@@ -55,7 +55,7 @@ public class AnaPencere extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(AnaPencere.class.getResource("/konsoloyun/gui/Resim12.jpeg"+ "")));
+		lblNewLabel_1.setIcon(new ImageIcon(AnaPencere.class.getResource("/Resim12.jpeg")));
 		lblNewLabel_1.setBounds(190, 167, 146, 83);
 		contentPane.add(lblNewLabel_1);
 
