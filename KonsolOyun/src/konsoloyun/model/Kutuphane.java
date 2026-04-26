@@ -1,9 +1,14 @@
 package konsoloyun.model;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 
-public class Kutuphane {
+public class Kutuphane implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
 	private ArrayList<Oyun> oyunListesi = new ArrayList<>();
 	
 	Kutuphane() {

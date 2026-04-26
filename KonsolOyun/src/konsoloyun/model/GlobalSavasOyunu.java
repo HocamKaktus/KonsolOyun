@@ -1,6 +1,8 @@
 package konsoloyun.model;
 
 public class GlobalSavasOyunu extends Oyun implements Aksiyon, CokOyunculu{
+	
+	private static final long serialVersionUID = 1L;
 
 	GlobalSavasOyunu(double id, String ad, double fiyat) {
 		super(id, ad, fiyat);

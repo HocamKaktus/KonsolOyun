@@ -1,6 +1,7 @@
 package konsoloyun.servis;
 
-public interface OdemeYontemi {
-	void odemeGerceklestir(double tutar);
+import konsoloyun.veri.YetersizBakiyeException;
 
+public interface OdemeYontemi {
+    public void odemeGerceklestir(double tutar) throws YetersizBakiyeException; 
 }

@@ -14,7 +14,6 @@ public class KrediKartiIleOdeme implements OdemeYontemi {
             System.out.println("Geçersiz tutar!");
             return;
         }
-
         System.out.println("Kredi kartı (" + kartNo + ") ile " + tutar + " TL ödeme alındı.");
     }
 }

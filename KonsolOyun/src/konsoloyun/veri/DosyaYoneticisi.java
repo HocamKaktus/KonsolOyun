@@ -6,6 +6,10 @@ import java.util.List;
 
 public class DosyaYoneticisi {
 	
+	private DosyaYoneticisi() {
+        throw new IllegalStateException("Araç sınıfından nesne üretilemez!");
+    }
+	
     public static <T> void verileriKaydet(List<T> liste, String dosyaAdi) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(dosyaAdi))) {
             oos.writeObject(liste);

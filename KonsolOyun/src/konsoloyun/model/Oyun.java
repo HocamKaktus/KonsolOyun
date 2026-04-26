@@ -1,8 +1,11 @@
 package konsoloyun.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Oyun {
+public class Oyun implements Serializable {
+
+private static final long serialVersionUID = 1L;
 private double id;
 private String ad;
 private double fiyat;

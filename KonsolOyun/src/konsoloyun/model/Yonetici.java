@@ -1,6 +1,8 @@
 package konsoloyun.model;
 
 public class Yonetici extends Hesap {
+
+	private static final long serialVersionUID = 1L;
 	private int adminSifresi;
 	
 	public Yonetici(int id, String kullaniciAdi, String sifre, String eposta,int adminSifresi) {

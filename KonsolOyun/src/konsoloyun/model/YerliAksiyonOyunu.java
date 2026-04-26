@@ -1,6 +1,9 @@
 package konsoloyun.model;
 
 public class YerliAksiyonOyunu extends Oyun implements Aksiyon,Yerli {
+
+	private static final long serialVersionUID = 1L;
+
 	public YerliAksiyonOyunu(int id,String ad,double fiyat) {
 		super(id,ad,fiyat);
 	}

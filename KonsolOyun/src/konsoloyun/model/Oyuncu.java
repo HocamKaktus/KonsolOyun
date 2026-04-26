@@ -1,6 +1,10 @@
 package konsoloyun.model;
 
+import konsoloyun.veri.YetersizBakiyeException;
+
 public class Oyuncu extends Hesap {
+	
+	private static final long serialVersionUID = 1L;
 	private double bakiye;
 	private Kutuphane kutuphane;
 	
@@ -27,14 +31,17 @@ public class Oyuncu extends Hesap {
 	    }
 	}
 	
-	public boolean bakiyeDus(double miktar) {
-        if (miktar > 0 && this.bakiye >= miktar) {
-            this.bakiye -= miktar;
-            System.out.println("Ödeme onaylandı. Kalan bakiye: " + this.bakiye + " TL");
-            return true; 
-        } else {
-            System.out.println("HATA: Ödeme başarısız! Bakiye yetersiz veya miktar geçersiz.");
-            return false;
-        }
-    }
+	public void odemeYap(double miktar) throws YetersizBakiyeException {
+	    if (miktar <= 0) {
+	        System.out.println("HATA: Geçersiz miktar!");
+	        return;
+	    }
+	    
+	    if (this.bakiye >= miktar) {
+	        this.bakiye -= miktar;
+	        System.out.println("Ödeme onaylandı. Kalan bakiye: " + this.bakiye);
+	    } else {
+	        throw new YetersizBakiyeException("Bakiye yetersiz! Gereken: " + miktar + ", Mevcut: " + this.bakiye);
+	    }
+	}
 }

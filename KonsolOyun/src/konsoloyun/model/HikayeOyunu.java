@@ -2,6 +2,9 @@ package konsoloyun.model;
 
 public class HikayeOyunu extends Oyun implements AcikDunya, TekOyunculu{
 
+	
+	private static final long serialVersionUID = 1L;
+
 	HikayeOyunu(double id, String ad, double fiyat) {
 		super(id, ad, fiyat);
 	}
