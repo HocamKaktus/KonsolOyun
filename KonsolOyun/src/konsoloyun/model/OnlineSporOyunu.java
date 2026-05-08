@@ -5,7 +5,7 @@ public class OnlineSporOyunu extends Oyun implements Spor, CokOyunculu{
 	
 	private static final long serialVersionUID = 1L;
 
-	OnlineSporOyunu(double id, String ad, double fiyat) {
+	public OnlineSporOyunu(double id, String ad, double fiyat) {
 		super(id, ad, fiyat);
 	}
 
