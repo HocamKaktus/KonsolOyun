@@ -61,6 +61,8 @@ public class KrediKartiPenceresi extends JFrame {
         btnOnayla.setBounds(30, 150, 260, 30);
         btnOnayla.setBackground(new Color(92, 126, 16));
         btnOnayla.setForeground(Color.WHITE);
+        btnOnayla.setOpaque(true);
+        btnOnayla.setBorderPainted(false);
         btnOnayla.setFocusPainted(false);
         add(btnOnayla);
 
