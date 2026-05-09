@@ -57,34 +57,42 @@ public class YoneticiPenceresi extends JFrame {
         
         btnEkle.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                String ad = txtAd.getText().trim();
+                String fiyatStr = txtFiyat.getText().trim();
+                
+                if (ad.isEmpty() || fiyatStr.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "HATA: Oyun adı veya fiyatı boş bırakılamaz!", "Eksik Veri", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
                 try {
-                    String ad = txtAd.getText();
-                    double fiyat = Double.parseDouble(txtFiyat.getText());
+                    double fiyat = Double.parseDouble(fiyatStr);
                     String secilenTur = (String) cmbTur.getSelectedItem();
                     
-                    int yeniId = Sistem.aktifMagaza.getMagazaOyunlari().size() + 1;
+                    int yeniId = Sistem.aktifMagaza.getMagazaOyunlari().size() + 1; 
+                    
                     Oyun yeniOyun = null;
 
                     switch (secilenTur) {
                         case "Hikaye Oyunu": yeniOyun = new HikayeOyunu(yeniId, ad, fiyat); break;
                         case "Global Savaş": yeniOyun = new GlobalSavasOyunu(yeniId, ad, fiyat); break;
                         case "Online Spor": yeniOyun = new OnlineSporOyunu(yeniId, ad, fiyat); break;
-                        case "Yerli Aksiyon": yeniOyun = new YerliAksiyonOyunu((int)yeniId, ad, fiyat); break;
+                        case "Yerli Aksiyon": yeniOyun = new YerliAksiyonOyunu(yeniId, ad, fiyat); break;
                     }
 
                     Sistem.aktifMagaza.magazaOyunEkle(yeniOyun);
                     
-                    
                     Sistem.magazaKaydet();
                     
-                    JOptionPane.showMessageDialog(null, "Oyun mağazaya eklendi!");
+                    JOptionPane.showMessageDialog(null, ad + " mağazaya başarıyla eklendi!", "İşlem Başarılı", JOptionPane.INFORMATION_MESSAGE);
+                    
                     txtAd.setText("");
                     txtFiyat.setText("");
 
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Geçerli fiyat girin!");
+                    JOptionPane.showMessageDialog(null, "HATA: Fiyat kısmına sadece sayı girmelisiniz!", "Hatalı Giriş", JOptionPane.ERROR_MESSAGE);
                 } catch (OyunZatenVarException ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Ekleme Hatası", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
