@@ -49,7 +49,7 @@ Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları i
 
 ## Varsayılan Giriş Bilgileri
 
-Sistemi test etmek için başlangıçta şu bilgileri kullanabilirsiniz fakat Sistem "Temiz Başlangıç" (Clean Start) modunda yapılandırıldığı için başlangıçta herhangi bir oyuncu hesabı bulunmamaktadır. Giriş Yap > Yeni hesap adımlarını izleyerek kendi hesabınızı oluşturmanız gerekmektedir.
+Sistemi test etmek için başlangıçta şu bilgileri kullanabilirsiniz fakat Sistem Temiz Başlangıç modunda yapılandırıldığı için başlangıçta herhangi bir oyuncu hesabı bulunmamaktadır. Giriş Yap > Yeni hesap adımlarını izleyerek kendi hesabınızı oluşturmanız gerekmektedir.
 
 - **Yönetici Girişi:**
   - Kullanıcı Adı: `admin`
