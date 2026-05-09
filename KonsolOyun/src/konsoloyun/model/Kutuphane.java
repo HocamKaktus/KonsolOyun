@@ -8,8 +8,7 @@ public class Kutuphane implements Serializable {
     private static final long serialVersionUID = 1L;
     private ArrayList<Oyun> oyunListesi = new ArrayList<>();
     
-    public Kutuphane() {
-    }
+    public Kutuphane() {}
     
     public void oyunEkle(Oyun yeniOyun) {
         oyunListesi.add(yeniOyun);

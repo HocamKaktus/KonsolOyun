@@ -13,11 +13,13 @@ public class Magaza implements Serializable {
         this.magazaOyunlari = new ArrayList<>();
     }
 
-    public void magazaOyunEkle(Oyun oyun) throws OyunZatenVarException {
-        if (magazaOyunlari.contains(oyun)) {
-            throw new OyunZatenVarException(oyun.getAd() + " zaten mağazada mevcut!");
+    public void magazaOyunEkle(Oyun yeniOyun) throws OyunZatenVarException {
+        for (Oyun o : magazaOyunlari) {
+            if (o.getAd().equalsIgnoreCase(yeniOyun.getAd().trim())) {
+                throw new OyunZatenVarException("Hata: '" + yeniOyun.getAd() + "' isimli oyun mağazada zaten mevcut!");
+            }
         }
-        magazaOyunlari.add(oyun);
+        magazaOyunlari.add(yeniOyun);
     }
 
     public List<Oyun> getMagazaOyunlari() {

@@ -62,7 +62,7 @@ public class YoneticiPenceresi extends JFrame {
                     double fiyat = Double.parseDouble(txtFiyat.getText());
                     String secilenTur = (String) cmbTur.getSelectedItem();
                     
-                    double yeniId = Math.random() * 1000; 
+                    int yeniId = Sistem.aktifMagaza.getMagazaOyunlari().size() + 1;
                     Oyun yeniOyun = null;
 
                     switch (secilenTur) {
