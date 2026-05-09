@@ -2,18 +2,16 @@ package konsoloyun.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import konsoloyun.model.Oyuncu;
 import konsoloyun.veri.Sistem;
 
-@SuppressWarnings("unused")
 public class GirisPaneli extends JFrame {
-   
-	private static final long serialVersionUID = 1L;
+    
+    private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unused")
 	public GirisPaneli() {
-        setTitle("KonsolOyun Login"); 
+        setTitle("KonsolOyun Login");
         setSize(350, 320);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,17 +59,21 @@ public class GirisPaneli extends JFrame {
         JButton btnGiris = new JButton("Giriş Yap");
         btnGiris.setBackground(butonMavi);
         btnGiris.setForeground(Color.WHITE);
+        btnGiris.setOpaque(true);
+        btnGiris.setBorderPainted(false);
         btnGiris.setBounds(40, 210, 115, 35);
         panel.add(btnGiris);
 
         JButton btnKayit = new JButton("Yeni Hesap");
         btnKayit.setBackground(new Color(60, 60, 60));
         btnKayit.setForeground(Color.WHITE);
+        btnKayit.setOpaque(true);
+        btnKayit.setBorderPainted(false);
         btnKayit.setBounds(175, 210, 115, 35);
         panel.add(btnKayit);
 
-        JButton btnYonetici = new JButton("Yetkili Girişi");
-        btnYonetici.setBounds(110, 255, 120, 20);
+        JButton btnYonetici = new JButton("Yetkili Girişi Portalı");
+        btnYonetici.setBounds(75, 255, 200, 20);
         btnYonetici.setContentAreaFilled(false);
         btnYonetici.setBorderPainted(false);
         btnYonetici.setForeground(Color.GRAY);
@@ -86,7 +88,7 @@ public class GirisPaneli extends JFrame {
                 new OyuncuPenceresi(girenOyuncu).setVisible(true);
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Hatalı bilgi!", "Hata", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Giriş Hatası: Bilgiler eşleşmedi!", "Hata", JOptionPane.ERROR_MESSAGE);
             }
         });
 

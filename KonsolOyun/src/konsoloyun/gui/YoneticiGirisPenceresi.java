@@ -9,15 +9,16 @@ import konsoloyun.model.Yonetici;
 
 public class YoneticiGirisPenceresi extends JFrame {
     
+    private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 1L;
-
+	@SuppressWarnings("unused")
 	public YoneticiGirisPenceresi() {
-        setTitle("Yetkili Personel Girişi");
+        setTitle("KonsolOyun - Yetkili Girişi");
         setSize(350, 300);
         setLocationRelativeTo(null);
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         
         getContentPane().setBackground(new Color(45, 45, 45)); 
         Color yaziRengi = Color.WHITE;
@@ -35,6 +36,8 @@ public class YoneticiGirisPenceresi extends JFrame {
 
         JTextField txtKullanici = new JTextField();
         txtKullanici.setBounds(150, 60, 140, 25);
+        txtKullanici.setBackground(new Color(30, 30, 30));
+        txtKullanici.setForeground(Color.WHITE);
         add(txtKullanici);
 
         JLabel lblSifre = new JLabel("Şifre:");
@@ -44,6 +47,8 @@ public class YoneticiGirisPenceresi extends JFrame {
 
         JPasswordField txtSifre = new JPasswordField();
         txtSifre.setBounds(150, 100, 140, 25);
+        txtSifre.setBackground(new Color(30, 30, 30));
+        txtSifre.setForeground(Color.WHITE);
         add(txtSifre);
 
         JLabel lblPin = new JLabel("Admin PIN:");
@@ -53,54 +58,56 @@ public class YoneticiGirisPenceresi extends JFrame {
 
         JPasswordField txtPin = new JPasswordField();
         txtPin.setBounds(150, 140, 140, 25);
+        txtPin.setBackground(new Color(30, 30, 30));
+        txtPin.setForeground(Color.WHITE);
         add(txtPin);
 
         JButton btnGiris = new JButton("Sisteme Gir");
         btnGiris.setBounds(40, 190, 120, 30);
         btnGiris.setBackground(new Color(220, 53, 69));
         btnGiris.setForeground(Color.WHITE);
+        btnGiris.setOpaque(true);
+        btnGiris.setBorderPainted(false);
         add(btnGiris);
 
         JButton btnGeri = new JButton("Geri Dön");
         btnGeri.setBounds(170, 190, 120, 30);
+        btnGeri.setBackground(Color.DARK_GRAY);
+        btnGeri.setForeground(Color.WHITE);
+        btnGeri.setOpaque(true);
+        btnGeri.setBorderPainted(false);
         add(btnGeri);
 
-        
         btnGiris.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String kAdi = txtKullanici.getText();
-                String sifre = new String(txtSifre.getPassword());
-                String pinStr = new String(txtPin.getPassword());
+                String kAdi = txtKullanici.getText().trim();
+                String sifre = new String(txtSifre.getPassword()).trim();
+                String pinStr = new String(txtPin.getPassword()).trim();
 
                 if (kAdi.isEmpty() || sifre.isEmpty() || pinStr.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Tüm alanları doldurun!", "Uyarı", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "HATA: Tüm alanları doldurmak zorunludur!", "Eksik Bilgi", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
                 try {
-                    int pin = Integer.parseInt(pinStr); 
-                    
+                    int pin = Integer.parseInt(pinStr);
                     Yonetici girenYonetici = Sistem.yoneticiGiris(kAdi, sifre, pin);
 
                     if (girenYonetici != null) {
-                        YoneticiPenceresi yp = new YoneticiPenceresi(girenYonetici);
-                        yp.setVisible(true);
-                        dispose(); 
+                        new YoneticiPenceresi(girenYonetici).setVisible(true);
+                        dispose();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Hatalı bilgi veya yetkisiz erişim!", "Erişim Reddedildi", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Erişim Reddedildi: Bilgiler hatalı!", "Yetkisiz Erişim", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Admin PIN sadece rakamlardan oluşmalıdır!", "Hata", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "PIN kodu sadece rakamlardan oluşmalıdır!", "Format Hatası", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
 
-        
-        btnGeri.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new GirisPaneli().setVisible(true);
-                dispose();
-            }
+        btnGeri.addActionListener(e -> {
+            new GirisPaneli().setVisible(true);
+            dispose();
         });
     }
 }

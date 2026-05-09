@@ -6,14 +6,15 @@ import konsoloyun.veri.Sistem;
 
 public class KayitPenceresi extends JFrame {
     
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings("unused")
 	public KayitPenceresi() {
-        setTitle("KonsolOyun - Yeni Hesap Oluştur"); 
+        setTitle("KonsolOyun - Yeni Hesap Oluştur");
         setSize(350, 380);
         setLocationRelativeTo(null); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         
         Color arkaPlan = new Color(34, 40, 49); 
         Color yaziRengi = new Color(199, 213, 224); 
@@ -38,6 +39,7 @@ public class KayitPenceresi extends JFrame {
         JTextField txtKullanici = new JTextField();
         txtKullanici.setBackground(new Color(23, 26, 33));
         txtKullanici.setForeground(Color.WHITE);
+        txtKullanici.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         txtKullanici.setBounds(40, 85, 250, 30);
         panel.add(txtKullanici);
 
@@ -49,6 +51,7 @@ public class KayitPenceresi extends JFrame {
         JTextField txtEposta = new JTextField();
         txtEposta.setBackground(new Color(23, 26, 33));
         txtEposta.setForeground(Color.WHITE);
+        txtEposta.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         txtEposta.setBounds(40, 145, 250, 30);
         panel.add(txtEposta);
 
@@ -60,12 +63,15 @@ public class KayitPenceresi extends JFrame {
         JPasswordField txtSifre = new JPasswordField();
         txtSifre.setBackground(new Color(23, 26, 33));
         txtSifre.setForeground(Color.WHITE);
+        txtSifre.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         txtSifre.setBounds(40, 205, 250, 30);
         panel.add(txtSifre);
 
         JButton btnKayitOl = new JButton("Hesabı Oluştur");
         btnKayitOl.setBackground(butonMavi);
         btnKayitOl.setForeground(Color.WHITE);
+        btnKayitOl.setOpaque(true);
+        btnKayitOl.setBorderPainted(false);
         btnKayitOl.setBounds(40, 255, 250, 35);
         panel.add(btnKayitOl);
 
@@ -74,11 +80,21 @@ public class KayitPenceresi extends JFrame {
         btnGeri.setContentAreaFilled(false);
         btnGeri.setBorderPainted(false);
         btnGeri.setForeground(Color.GRAY);
+        btnGeri.setCursor(new Cursor(Cursor.HAND_CURSOR));
         panel.add(btnGeri);
 
         btnKayitOl.addActionListener(e -> {
-            Sistem.oyuncuEkle(txtKullanici.getText(), new String(txtSifre.getPassword()), txtEposta.getText());
-            JOptionPane.showMessageDialog(null, "Kayıt Başarılı!");
+            String kAdi = txtKullanici.getText().trim();
+            String sifre = new String(txtSifre.getPassword()).trim();
+            String eposta = txtEposta.getText().trim();
+
+            if (kAdi.isEmpty() || sifre.isEmpty() || eposta.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "HATA: Tüm alanları doldurmalısınız! Sadece boşluk bırakamazsınız.", "Eksik Bilgi", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Sistem.oyuncuEkle(kAdi, sifre, eposta);
+            JOptionPane.showMessageDialog(null, "Kayıt Başarılı! Hoş geldin " + kAdi);
             new GirisPaneli().setVisible(true);
             dispose();
         });
